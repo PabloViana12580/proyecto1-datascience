@@ -6,5 +6,5 @@ Ivan Maldonado - Mayra Silva -
 
 ----------------------------------* Proyecto 1 - Data Science *----------------------------------"
 
-#Para hacer esto tienen que bajar el archivo del drive, y setear su working directory a donde guardaron el archivo
+#Para hacer esto tienen que bajar el archivo del drive, y setear su working directory a donde guardaron el archivo RData
 load("republica_guatemala.RData")
