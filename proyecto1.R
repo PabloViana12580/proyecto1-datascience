@@ -17,6 +17,8 @@ load("republica_guatemala.RData")
 datos<-republica_guatemala
 
 # Unificar las etiquetas
+# COLUMNA DIRECTOR
+datos[datos == "---"] <- NA
 datos[datos == "-"] <- NA
 datos[datos == "--"] <- NA
 datos[datos == "---"] <- NA
@@ -32,7 +34,14 @@ datos[datos == "------------"] <- NA
 datos[datos == "-------------"] <- NA
 datos[datos == "--------------"] <- NA
 datos[datos == "-----------------"] <- NA
+datos[datos == "----"] <- NA
+datos[datos == "-----------"] <- NA
+datos[datos == "---+"] <- NA
+datos[datos == "."] <- NA
 datos[datos == 0] <- NA
+
+# COLUMNA SUPERVISOR
+datos$SUPERVISOR[datos$SUPERVISOR == "------------------------ ---------------------------"] <- NA
 
 #Cambio de tipo de columna de char a factor
 datos_transformados <- transform(datos, DEPARTAMENTO = as.factor(DEPARTAMENTO),
