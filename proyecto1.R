@@ -8,3 +8,8 @@ Ivan Maldonado - Mayra Silva -
 
 #Para hacer esto tienen que bajar el archivo del drive, y setear su working directory a donde guardaron el archivo RData
 load("republica_guatemala.RData")
+
+datos<-republica_guatemala
+datos[datos == "---"] <- NA
+datos[datos == "-"] <- NA
+datos[datos == "--"] <- NA
