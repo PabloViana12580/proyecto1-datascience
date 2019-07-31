@@ -14,12 +14,6 @@ Mayra Silva -
 load("republica_guatemala.RData")
 
 
-
-#Cambiar republica_guatemala que tengan guiones por NA
-republica_guatemala[republica_guatemala == "---"] <- NA
-republica_guatemala[republica_guatemala == "-"] <- NA
-republica_guatemala[republica_guatemala == "--"] <- NA
-
 #Cambiar datos que tengan guiones por NA
 datos<-republica_guatemala
 
@@ -49,18 +43,12 @@ datos[datos == "---------------------"] <- NA
 datos[datos == "--------------------"] <- NA
 datos$DIRECTOR[datos$DIRECTOR == "-----------------------------"] <- NA
 datos[datos == "01-"] <- NA #Cambiando distrito que solo tenga 01- a NA
-datos[datos == "----"] <- NA
-datos[datos == "-----------"] <- NA
-datos[datos == "---+"] <- NA
-datos[datos == "."] <- NA
-datos[datos == 0] <- NA
 
 # COLUMNA SUPERVISOR
 datos$SUPERVISOR[datos$SUPERVISOR == "------------------------ ---------------------------"] <- NA
 
 #Cambio de tipo de columna de char a factor
 
-datos_transformados <- transform(republica_guatemala, DEPARTAMENTO = as.factor(DEPARTAMENTO),
 datos <- transform(republica_guatemala, DEPARTAMENTO = as.factor(DEPARTAMENTO),
                                  MUNICIPIO = as.factor(MUNICIPIO),
                                  NIVEL = as.factor(NIVEL),
