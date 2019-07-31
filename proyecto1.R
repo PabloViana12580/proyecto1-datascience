@@ -1,17 +1,15 @@
-"
-Universidad del Valle de Guatemala - Data science 1 
+
+"Universidad del Valle de Guatemala - Data science 1 
 Catedratica: Lynette Garcia
 Pablo Viana - 16091 
 Sergio Marchena - 16387
 Jose Martinez -  
 Odalis Reyes - 17032
 Ivan Maldonado - 
-Mayra Silva - 
-
-"
+Mayra Silva - 17276
 
 
-"----------------------------------* Proyecto 1 - Data Science *----------------------------------"
+----------------------------------* Proyecto 1 - Data Science *----------------------------------"
 #Para hacer esto tienen que bajar el archivo del drive, y setear su working directory a donde guardaron el archivo RData
 load("republica_guatemala.RData")
 
@@ -47,10 +45,10 @@ datos[datos == "-----------------"] <- NA
 datos[datos == "---------------------"] <- NA
 datos[datos == "--------------------"] <- NA
 datos$DIRECTOR[datos$DIRECTOR == "-----------------------------"] <- NA
+datos[datos == "01-"] <- NA #Cambiando distrito que solo tenga 01- a NA
 
 # COLUMNA SUPERVISOR
 datos$SUPERVISOR[datos$SUPERVISOR == "------------------------ ---------------------------"] <- NA
-
 
 #Cambio de tipo de columna de char a factor
 datos_transformados <- transform(republica_guatemala, DEPARTAMENTO = as.factor(DEPARTAMENTO),
@@ -64,9 +62,9 @@ datos_transformados <- transform(republica_guatemala, DEPARTAMENTO = as.factor(D
                                  PLAN = as.factor(PLAN))
 View(datos_transformados)
 
-
 #Eliminacion de caracteres especificos en columna telefono 
 datos_transformados$TELEFONO <- gsub("-|y|,| ","",datos_transformados$TELEFONO)
 
 #Eliminacion de filas vacias
 datos <- subset(datos_transformados, !(is.na(DISTRITO) & is.na(DEPARTAMENTO) & is.na(MUNICIPIO) & is.na(ESTABLECIMIENTO) & is.na(DIRECCION) & is.na(TELEFONO) & is.na(DIRECTOR) & is.na(NIVEL) & is.na(SECTOR) & is.na(AREA) & is.na(STATUS) & is.na(MODALIDAD) & is.na(JORNADA) & is.na(PLAN) & is.na(DEPARTAMENTAL)))
+
