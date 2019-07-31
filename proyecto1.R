@@ -28,6 +28,7 @@ datos[datos == "--------"] <- NA
 datos[datos == "---------"] <- NA
 datos[datos == "----------"] <- NA
 datos[datos == "-----------"] <- NA
+datos[datos == "------------"] <- NA
 datos[datos == "-------------"] <- NA
 datos[datos == "--------------"] <- NA
 datos[datos == "-----------------"] <- NA
@@ -42,6 +43,6 @@ datos_transformados <- transform(datos, DEPARTAMENTO = as.factor(DEPARTAMENTO),
                                  STATUS = as.factor(STATUS),
                                  JORNADA = as.factor(JORNADA),
                                  PLAN = as.factor(PLAN))
-
+View(datos_transformados)
 
 
