@@ -18,7 +18,9 @@ datos<-republica_guatemala
 
 # Unificar las etiquetas
 # COLUMNA DIRECTOR
-datos[datos == "---"] <- NA
+datos[datos == "---+"] <- NA
+datos[datos == "."] <- NA
+datos[datos == 0] <- NA
 datos[datos == "-"] <- NA
 datos[datos == "--"] <- NA
 datos[datos == "---"] <- NA
@@ -34,11 +36,9 @@ datos[datos == "------------"] <- NA
 datos[datos == "-------------"] <- NA
 datos[datos == "--------------"] <- NA
 datos[datos == "-----------------"] <- NA
-datos[datos == "----"] <- NA
-datos[datos == "-----------"] <- NA
-datos[datos == "---+"] <- NA
-datos[datos == "."] <- NA
-datos[datos == 0] <- NA
+datos[datos == "---------------------"] <- NA
+datos[datos == "--------------------"] <- NA
+datos$DIRECTOR[datos$DIRECTOR == "-----------------------------"] <- NA
 
 # COLUMNA SUPERVISOR
 datos$SUPERVISOR[datos$SUPERVISOR == "------------------------ ---------------------------"] <- NA
