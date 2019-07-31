@@ -3,7 +3,7 @@ Catedratica: Lynette Garcia
 Pablo Viana - 16091 
 Sergio Marchena - 16387
 Jose Martinez -  
-Odalis Reyes -
+Odalis Reyes - 17032
 Ivan Maldonado - 
 Mayra Silva - 
 
@@ -15,9 +15,13 @@ load("republica_guatemala.RData")
 
 #Cambiar datos que tengan guiones por NA
 datos<-republica_guatemala
+
+# Unificar las etiquetas
 datos[datos == "---"] <- NA
 datos[datos == "-"] <- NA
 datos[datos == "--"] <- NA
+datos[datos == "--"] <- NA
+datos[datos == 0] <- NA
 
 #Cambio de tipo de columna de char a factor
 datos_transformados <- transform(datos, DEPARTAMENTO = as.factor(DEPARTAMENTO),
