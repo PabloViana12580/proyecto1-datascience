@@ -1,8 +1,12 @@
 "Universidad del Valle de Guatemala - Data science 1 
 Catedratica: Lynette Garcia
-Pablo Viana - 16091 Sergio Marchena - 16 
-Jose Martinez -  Odalis Reyes -
-Ivan Maldonado - Mayra Silva - 
+Pablo Viana - 16091 
+Sergio Marchena - 16387
+Jose Martinez -  
+Odalis Reyes -
+Ivan Maldonado - 
+Mayra Silva - 
+
 
 ----------------------------------* Proyecto 1 - Data Science *----------------------------------"
 
@@ -12,4 +16,9 @@ load("republica_guatemala.RData")
 datos<-republica_guatemala
 datos[datos == "---"] <- NA
 datos[datos == "-"] <- NA
+<<<<<<< HEAD:proyecto1.R
 datos[datos == "--"] <- NA
+=======
+datos[datos == "--"] <- NA
+View(datos)
+>>>>>>> f3ca70bddc4d714331819691c83494ef5c04515a:protecto1.R
