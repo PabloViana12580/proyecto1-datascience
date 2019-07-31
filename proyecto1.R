@@ -3,7 +3,7 @@ Catedratica: Lynette Garcia
 Pablo Viana - 16091 
 Sergio Marchena - 16387
 Jose Martinez -  
-Odalis Reyes -
+Odalis Reyes - 17032
 Ivan Maldonado - 
 Mayra Silva - 
 
@@ -12,10 +12,42 @@ Mayra Silva -
 #Para hacer esto tienen que bajar el archivo del drive, y setear su working directory a donde guardaron el archivo RData
 load("republica_guatemala.RData")
 
+<<<<<<< HEAD
 #Cambiar republica_guatemala que tengan guiones por NA
 republica_guatemala[republica_guatemala == "---"] <- NA
 republica_guatemala[republica_guatemala == "-"] <- NA
 republica_guatemala[republica_guatemala == "--"] <- NA
+=======
+#Cambiar datos que tengan guiones por NA
+datos<-republica_guatemala
+
+# Unificar las etiquetas
+# COLUMNA DIRECTOR
+datos[datos == "---"] <- NA
+datos[datos == "-"] <- NA
+datos[datos == "--"] <- NA
+datos[datos == "---"] <- NA
+datos[datos == "----"] <- NA
+datos[datos == "-----"] <- NA
+datos[datos == "------"] <- NA
+datos[datos == "-------"] <- NA
+datos[datos == "--------"] <- NA
+datos[datos == "---------"] <- NA
+datos[datos == "----------"] <- NA
+datos[datos == "-----------"] <- NA
+datos[datos == "------------"] <- NA
+datos[datos == "-------------"] <- NA
+datos[datos == "--------------"] <- NA
+datos[datos == "-----------------"] <- NA
+datos[datos == "----"] <- NA
+datos[datos == "-----------"] <- NA
+datos[datos == "---+"] <- NA
+datos[datos == "."] <- NA
+datos[datos == 0] <- NA
+
+# COLUMNA SUPERVISOR
+datos$SUPERVISOR[datos$SUPERVISOR == "------------------------ ---------------------------"] <- NA
+>>>>>>> da50500c4d3e150b8b5caa07a70da73ee27b75c9
 
 #Cambio de tipo de columna de char a factor
 datos_transformados <- transform(republica_guatemala, DEPARTAMENTO = as.factor(DEPARTAMENTO),
@@ -25,8 +57,15 @@ datos_transformados <- transform(republica_guatemala, DEPARTAMENTO = as.factor(D
                                  AREA = as.factor(AREA),
                                  STATUS = as.factor(STATUS),
                                  JORNADA = as.factor(JORNADA),
+                                 TELEFONO = as.factor(TELEFONO),
                                  PLAN = as.factor(PLAN))
+View(datos_transformados)
 
+<<<<<<< HEAD
 #Eliminacion de caracteres especificos en columna telefono 
 datos_transformados$TELEFONO <- gsub("-|y|,| ","",datos_transformados$TELEFONO)
+=======
+#Eliminacion de filas vacias
+datos <- subset(datos_transformados, !(is.na(DISTRITO) & is.na(DEPARTAMENTO) & is.na(MUNICIPIO) & is.na(ESTABLECIMIENTO) & is.na(DIRECCION) & is.na(TELEFONO) & is.na(DIRECTOR) & is.na(NIVEL) & is.na(SECTOR) & is.na(AREA) & is.na(STATUS) & is.na(MODALIDAD) & is.na(JORNADA) & is.na(PLAN) & is.na(DEPARTAMENTAL)))
+>>>>>>> da50500c4d3e150b8b5caa07a70da73ee27b75c9
 
