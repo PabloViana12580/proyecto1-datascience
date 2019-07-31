@@ -42,7 +42,5 @@ datos_transformados <- transform(datos, DEPARTAMENTO = as.factor(DEPARTAMENTO),
                                  AREA = as.factor(AREA),
                                  STATUS = as.factor(STATUS),
                                  JORNADA = as.factor(JORNADA),
+                                 TELEFONO = as.factor(TELEFONO),
                                  PLAN = as.factor(PLAN))
-View(datos_transformados)
-
-
