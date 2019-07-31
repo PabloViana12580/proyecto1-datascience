@@ -13,12 +13,21 @@ Mayra Silva -
 #Para hacer esto tienen que bajar el archivo del drive, y setear su working directory a donde guardaron el archivo RData
 load("republica_guatemala.RData")
 
+#Cambiar datos que tengan guiones por NA
 datos<-republica_guatemala
 datos[datos == "---"] <- NA
 datos[datos == "-"] <- NA
-<<<<<<< HEAD:proyecto1.R
 datos[datos == "--"] <- NA
-=======
-datos[datos == "--"] <- NA
-View(datos)
->>>>>>> f3ca70bddc4d714331819691c83494ef5c04515a:protecto1.R
+
+#Cambio de tipo de columna de char a factor
+datos_transformados <- transform(datos, DEPARTAMENTO = as.factor(DEPARTAMENTO),
+                                 MUNICIPIO = as.factor(MUNICIPIO),
+                                 NIVEL = as.factor(NIVEL),
+                                 SECTOR = as.factor(SECTOR),
+                                 AREA = as.factor(AREA),
+                                 STATUS = as.factor(STATUS),
+                                 JORNADA = as.factor(JORNADA),
+                                 PLAN = as.factor(PLAN))
+
+
+
