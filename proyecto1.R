@@ -17,10 +17,20 @@ load("republica_guatemala.RData")
 datos<-republica_guatemala
 
 # Unificar las etiquetas
-datos[datos == "---"] <- NA
 datos[datos == "-"] <- NA
 datos[datos == "--"] <- NA
-datos[datos == "--"] <- NA
+datos[datos == "---"] <- NA
+datos[datos == "----"] <- NA
+datos[datos == "-----"] <- NA
+datos[datos == "------"] <- NA
+datos[datos == "-------"] <- NA
+datos[datos == "--------"] <- NA
+datos[datos == "---------"] <- NA
+datos[datos == "----------"] <- NA
+datos[datos == "-----------"] <- NA
+datos[datos == "-------------"] <- NA
+datos[datos == "--------------"] <- NA
+datos[datos == "-----------------"] <- NA
 datos[datos == 0] <- NA
 
 #Cambio de tipo de columna de char a factor
