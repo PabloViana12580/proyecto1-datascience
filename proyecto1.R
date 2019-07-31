@@ -9,18 +9,16 @@ Mayra Silva -
 
 
 ----------------------------------* Proyecto 1 - Data Science *----------------------------------"
-
 #Para hacer esto tienen que bajar el archivo del drive, y setear su working directory a donde guardaron el archivo RData
 load("republica_guatemala.RData")
 
-#Cambiar datos que tengan guiones por NA
-datos<-republica_guatemala
-datos[datos == "---"] <- NA
-datos[datos == "-"] <- NA
-datos[datos == "--"] <- NA
+#Cambiar republica_guatemala que tengan guiones por NA
+republica_guatemala[republica_guatemala == "---"] <- NA
+republica_guatemala[republica_guatemala == "-"] <- NA
+republica_guatemala[republica_guatemala == "--"] <- NA
 
 #Cambio de tipo de columna de char a factor
-datos_transformados <- transform(datos, DEPARTAMENTO = as.factor(DEPARTAMENTO),
+datos_transformados <- transform(republica_guatemala, DEPARTAMENTO = as.factor(DEPARTAMENTO),
                                  MUNICIPIO = as.factor(MUNICIPIO),
                                  NIVEL = as.factor(NIVEL),
                                  SECTOR = as.factor(SECTOR),
@@ -29,5 +27,6 @@ datos_transformados <- transform(datos, DEPARTAMENTO = as.factor(DEPARTAMENTO),
                                  JORNADA = as.factor(JORNADA),
                                  PLAN = as.factor(PLAN))
 
-
+#Eliminacion de caracteres especificos en columna telefono 
+datos_transformados$TELEFONO <- gsub("-|y|,| ","",datos_transformados$TELEFONO)
 
