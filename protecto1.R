@@ -14,7 +14,8 @@ Mayra Silva -
 load("republica_guatemala.RData")
 
 datos<-republica_guatemala
-datos[datos == "---"] <- NA
 datos[datos == "-"] <- NA
 datos[datos == "--"] <- NA
+datos[datos == "---"] <- NA
+datos[datos == "-----------"] <- NA
 View(datos)
