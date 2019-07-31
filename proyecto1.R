@@ -3,7 +3,7 @@ Catedratica: Lynette Garcia
 Pablo Viana - 16091 
 Sergio Marchena - 16387
 Jose Martinez -  
-Odalis Reyes -
+Odalis Reyes - 17032
 Ivan Maldonado - 
 Mayra Silva - 
 
@@ -15,9 +15,33 @@ load("republica_guatemala.RData")
 
 #Cambiar datos que tengan guiones por NA
 datos<-republica_guatemala
+
+# Unificar las etiquetas
+# COLUMNA DIRECTOR
 datos[datos == "---"] <- NA
 datos[datos == "-"] <- NA
 datos[datos == "--"] <- NA
+datos[datos == "---"] <- NA
+datos[datos == "----"] <- NA
+datos[datos == "-----"] <- NA
+datos[datos == "------"] <- NA
+datos[datos == "-------"] <- NA
+datos[datos == "--------"] <- NA
+datos[datos == "---------"] <- NA
+datos[datos == "----------"] <- NA
+datos[datos == "-----------"] <- NA
+datos[datos == "------------"] <- NA
+datos[datos == "-------------"] <- NA
+datos[datos == "--------------"] <- NA
+datos[datos == "-----------------"] <- NA
+datos[datos == "----"] <- NA
+datos[datos == "-----------"] <- NA
+datos[datos == "---+"] <- NA
+datos[datos == "."] <- NA
+datos[datos == 0] <- NA
+
+# COLUMNA SUPERVISOR
+datos$SUPERVISOR[datos$SUPERVISOR == "------------------------ ---------------------------"] <- NA
 
 #Cambio de tipo de columna de char a factor
 datos_transformados <- transform(datos, DEPARTAMENTO = as.factor(DEPARTAMENTO),
@@ -28,6 +52,9 @@ datos_transformados <- transform(datos, DEPARTAMENTO = as.factor(DEPARTAMENTO),
                                  STATUS = as.factor(STATUS),
                                  JORNADA = as.factor(JORNADA),
                                  PLAN = as.factor(PLAN))
+View(datos_transformados)
 
+#Eliminacion de filas vacias
+datos <- subset(datos_transformados, !(is.na(DISTRITO) & is.na(DEPARTAMENTO) & is.na(MUNICIPIO) & is.na(ESTABLECIMIENTO) & is.na(DIRECCION) & is.na(TELEFONO) & is.na(DIRECTOR) & is.na(NIVEL) & is.na(SECTOR) & is.na(AREA) & is.na(STATUS) & is.na(MODALIDAD) & is.na(JORNADA) & is.na(PLAN) & is.na(DEPARTAMENTAL)))
 
 
