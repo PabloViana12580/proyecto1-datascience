@@ -45,4 +45,7 @@ datos_transformados <- transform(datos, DEPARTAMENTO = as.factor(DEPARTAMENTO),
                                  PLAN = as.factor(PLAN))
 View(datos_transformados)
 
+#Eliminacion de filas vacias
+datos <- subset(datos_transformados, !(is.na(DISTRITO) & is.na(DEPARTAMENTO) & is.na(MUNICIPIO) & is.na(ESTABLECIMIENTO) & is.na(DIRECCION) & is.na(TELEFONO) & is.na(DIRECTOR) & is.na(NIVEL) & is.na(SECTOR) & is.na(AREA) & is.na(STATUS) & is.na(MODALIDAD) & is.na(JORNADA) & is.na(PLAN) & is.na(DEPARTAMENTAL)))
+
 
