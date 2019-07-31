@@ -7,11 +7,12 @@ Jose Martinez -
 Odalis Reyes - 17032
 Ivan Maldonado - 
 Mayra Silva - 17276
-
+Mayra Silva - 
 
 ----------------------------------* Proyecto 1 - Data Science *----------------------------------"
 #Para hacer esto tienen que bajar el archivo del drive, y setear su working directory a donde guardaron el archivo RData
 load("republica_guatemala.RData")
+
 
 
 #Cambiar republica_guatemala que tengan guiones por NA
@@ -27,6 +28,7 @@ datos<-republica_guatemala
 datos[datos == "---+"] <- NA
 datos[datos == "."] <- NA
 datos[datos == 0] <- NA
+datos[datos == "---"] <- NA
 datos[datos == "-"] <- NA
 datos[datos == "--"] <- NA
 datos[datos == "---"] <- NA
@@ -46,12 +48,19 @@ datos[datos == "---------------------"] <- NA
 datos[datos == "--------------------"] <- NA
 datos$DIRECTOR[datos$DIRECTOR == "-----------------------------"] <- NA
 datos[datos == "01-"] <- NA #Cambiando distrito que solo tenga 01- a NA
+datos[datos == "----"] <- NA
+datos[datos == "-----------"] <- NA
+datos[datos == "---+"] <- NA
+datos[datos == "."] <- NA
+datos[datos == 0] <- NA
 
 # COLUMNA SUPERVISOR
 datos$SUPERVISOR[datos$SUPERVISOR == "------------------------ ---------------------------"] <- NA
 
 #Cambio de tipo de columna de char a factor
+
 datos_transformados <- transform(republica_guatemala, DEPARTAMENTO = as.factor(DEPARTAMENTO),
+datos <- transform(republica_guatemala, DEPARTAMENTO = as.factor(DEPARTAMENTO),
                                  MUNICIPIO = as.factor(MUNICIPIO),
                                  NIVEL = as.factor(NIVEL),
                                  SECTOR = as.factor(SECTOR),
@@ -67,4 +76,3 @@ datos_transformados$TELEFONO <- gsub("-|y|,| ","",datos_transformados$TELEFONO)
 
 #Eliminacion de filas vacias
 datos <- subset(datos_transformados, !(is.na(DISTRITO) & is.na(DEPARTAMENTO) & is.na(MUNICIPIO) & is.na(ESTABLECIMIENTO) & is.na(DIRECCION) & is.na(TELEFONO) & is.na(DIRECTOR) & is.na(NIVEL) & is.na(SECTOR) & is.na(AREA) & is.na(STATUS) & is.na(MODALIDAD) & is.na(JORNADA) & is.na(PLAN) & is.na(DEPARTAMENTAL)))
-
