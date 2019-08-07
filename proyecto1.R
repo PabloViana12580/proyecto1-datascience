@@ -74,4 +74,12 @@ datos <- subset(datos, !(is.na(DISTRITO) & is.na(DEPARTAMENTO) & is.na(MUNICIPIO
 #Eliminación de filas repetidas
 datos <- datos%>% distinct(DEPARTAMENTO, MUNICIPIO, ESTABLECIMIENTO, DIRECCION, STATUS, JORNADA, PLAN, .keep_all = TRUE)
 
+# Elimina la fila que está llena de NAs
+datos <- subset(datos, !(is.na(CODIGO) & is.na(DISTRITO)))
+
+
+View(datos)
+
+
+
 
