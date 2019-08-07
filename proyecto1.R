@@ -98,6 +98,21 @@ datos$DIRECCION <- gsub("ª", '', datos$DIRECCION)
 datos$DIRECCION <- gsub("\\. "," ",datos$DIRECCION)
 datos$DIRECCION <- gsub("O CALLE","0 CALLE",datos$DIRECCION)
 datos$DIRECCION <- gsub(" Y "," ",datos$DIRECCION)
+
+#Más cambios de dirección
+datos$DIRECCION <- gsub("2DA","2 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("3a","3 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("10MA","10 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("CHUARCHO","CHUARRANCHO ",datos$DIRECCION)
+datos$DIRECCION <- gsub("ASENIENTO","ASENTAMIENTO ",datos$DIRECCION)
+datos$DIRECCION <- gsub("0A","0 A ",datos$DIRECCION)
+datos$DIRECCION <- gsub("CABECMUNICIPAL","CABECERA MUNICIPAL ",datos$DIRECCION)
+datos$DIRECCION <- gsub("CARRETA SANLUCIA COTZUMALGUAPA","CARRETERA SANTA LUCÍA COTZUMALGUAPA ",datos$DIRECCION)
+datos$DIRECCION <- gsub("5CALLE","5 CALLE ",datos$DIRECCION)
+datos$DIRECCION <- gsub("6CALLE","6 CALLE ",datos$DIRECCION)
+datos$DIRECCION <- gsub("8VA","8 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("7MA","7 ",datos$DIRECCION)
+
 #Eliminación de caracteres en la columna de establecimiento
 datos$ESTABLECIMIENTO <- gsub("'", '', datos$ESTABLECIMIENTO)
 datos$ESTABLECIMIENTO <- gsub("\\(POR MADUREZ\\)", '', datos$ESTABLECIMIENTO)
