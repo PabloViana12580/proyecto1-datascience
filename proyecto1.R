@@ -68,13 +68,41 @@ datos$SUPERVISOR[datos$SUPERVISOR == "------------------------ -----------------
 #Debido a que estos datos pertenecen al sector diversificado, se cambian los NA's de la columna NIVEL a DIVERSIFICADO
 datos$NIVEL[is.na(datos$NIVEL)] <- "DIVERSIFICADO"
 
+#Corrección de palabras "AV.", "AVE", "AVE." por "AVENIDA
+datos$DIRECCION <- gsub("AV|AV.|AVE.|AVAENIDA|AVENIDA"," AVE ",datos$DIRECCION)
+datos$DIRECCION <- gsub("TA.|TA|RA|RA.|ERA|ERA.","",datos$DIRECCION)
+datos$DIRECCION <- gsub("1A.|1A","1 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("2A.|2A","2 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("3A.|3A","3 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("4A.|4A","4 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("5A.|5A","5 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("6A.|6A","6 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("7A.|7A","7 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("8A.|8A","8 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("9A.|9A","9 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("10A.|10A","10 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("11A.|11A","11 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("12A.|12A","12 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("13A.|13A","13 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("14A.|14A","14 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("15A.|15A","15 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("16A.|16A","16 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("17A.|17A","17 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("18A.|18A","18 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("19A.|19A","19 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("20A.|20A","20 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("22A.|22A","22 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("23A.|23A","23 ",datos$DIRECCION)
+datos$DIRECCION <- gsub("   |  "," ",datos$DIRECCION)
+datos$DIRECCION <- gsub("ª", '', datos$DIRECCION)
+datos$DIRECCION <- gsub("\\. "," ",datos$DIRECCION)
+datos$DIRECCION <- gsub("O CALLE","0 CALLE",datos$DIRECCION)
+datos$DIRECCION <- gsub(" Y "," ",datos$DIRECCION)
+#Eliminación de caracteres en la columna de establecimiento
+datos$ESTABLECIMIENTO <- gsub("'", '', datos$ESTABLECIMIENTO)
+
 #Eliminacion de caracteres especificos en columna telefono 
 datos$TELEFONO <- gsub("-|cel|\\.|/|,| ","",datos$TELEFONO)
-
-#Eliminacion de caracteres especificos en columna Nombre
-datos$ESTABLECIMIENTO <- gsub("'", '', datos$ESTABLECIMIENTO)
-datos$ESTABLECIMIENTO <- gsub("ª", '', datos$ESTABLECIMIENTO)
-datos$DIRECCION <- gsub("\\. "," ",datos$DIRECCION)
 
 #Eliminacion de caracteres especificos en columna dirección
 datos$DIRECCION <- gsub(",", '', datos$DIRECCION)
@@ -98,3 +126,4 @@ View(datos)
 df <-data_frame(datos)
 write_excel_csv(datos,"DatosLimpios.csv")
 
+View(datos)
