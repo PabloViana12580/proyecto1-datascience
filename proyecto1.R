@@ -4,11 +4,12 @@ Pablo Viana - 16091
 Sergio Marchena - 16387
 Jose Martinez -  
 Odalis Reyes - 17032
-Ivan Maldonado - 
+Ivan Maldonado - 17211
 Mayra Silva - 17276
 Mayra Silva - 
 
 ----------------------------------* Proyecto 1 - Data Science *----------------------------------"
+#Librerias
 library(tidyverse)
 
 #cargamos archivo RData
@@ -69,5 +70,8 @@ datos$TELEFONO[nchar(datos$TELEFONO) > 8] <- NA
 
 #Eliminacion de filas vacias
 datos <- subset(datos, !(is.na(DISTRITO) & is.na(DEPARTAMENTO) & is.na(MUNICIPIO) & is.na(ESTABLECIMIENTO) & is.na(DIRECCION) & is.na(TELEFONO) & is.na(DIRECTOR) & is.na(NIVEL) & is.na(SECTOR) & is.na(AREA) & is.na(STATUS) & is.na(MODALIDAD) & is.na(JORNADA) & is.na(PLAN) & is.na(DEPARTAMENTAL)))
+
+#Eliminación de filas repetidas
+datos <- datos%>% distinct(DEPARTAMENTO, MUNICIPIO, ESTABLECIMIENTO, DIRECCION, STATUS, JORNADA, PLAN, .keep_all = TRUE)
 
 
