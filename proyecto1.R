@@ -32,6 +32,9 @@ datos <- transform(republica_guatemala, DEPARTAMENTO = as.factor(DEPARTAMENTO),
                    DISTRITO = as.factor(DISTRITO),
                    PLAN = as.factor(PLAN))
 
+datos <- transform(republica_guatemala, TELEFONO = as.list(TELEFONO))
+
+
 # Unificar las etiquetas
 #Cambiamos todos los datos que representen ausencia de informacion por NA 
 datos[datos == "---+"] <- NA
@@ -67,6 +70,12 @@ datos$NIVEL[is.na(datos$NIVEL)] <- "DIVERSIFICADO"
 
 #Eliminacion de caracteres especificos en columna telefono 
 datos$TELEFONO <- gsub("-|cel|\\.|/|,| ","",datos$TELEFONO)
+
+#Eliminacion de caracteres especificos en columna Nombre
+datos$ESTABLECIMIENTO <- gsub("'", '', datos$ESTABLECIMIENTO) 
+
+#Eliminacion de caracteres especificos en columna dirección
+datos$DIRECCION <- gsub(",", '', datos$DIRECCION) 
 
 #Restriccion de un solo telefono por establecimiento
 datos$TELEFONO<- substr(datos$TELEFONO,1,8)
