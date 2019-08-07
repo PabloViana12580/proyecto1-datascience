@@ -6,7 +6,7 @@ Jose Martinez -
 Odalis Reyes - 17032
 Ivan Maldonado - 17211
 Mayra Silva - 17276
-Mayra Silva - 
+
 
 ----------------------------------* Proyecto 1 - Data Science *----------------------------------"
 #Librerias
@@ -65,8 +65,9 @@ datos$NIVEL[is.na(datos$NIVEL)] <- "DIVERSIFICADO"
 
 #Eliminacion de caracteres especificos en columna telefono 
 datos$TELEFONO <- gsub("-|cel|\\.|/|,| ","",datos$TELEFONO)
+
 #Restriccion de un solo telefono por establecimiento
-datos$TELEFONO[nchar(datos$TELEFONO) > 8] <- NA
+datos$TELEFONO<- substr(datos$TELEFONO,1,8)
 
 #Eliminacion de filas vacias
 datos <- subset(datos, !(is.na(DISTRITO) & is.na(DEPARTAMENTO) & is.na(MUNICIPIO) & is.na(ESTABLECIMIENTO) & is.na(DIRECCION) & is.na(TELEFONO) & is.na(DIRECTOR) & is.na(NIVEL) & is.na(SECTOR) & is.na(AREA) & is.na(STATUS) & is.na(MODALIDAD) & is.na(JORNADA) & is.na(PLAN) & is.na(DEPARTAMENTAL)))
