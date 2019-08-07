@@ -100,6 +100,7 @@ datos$DIRECCION <- gsub("O CALLE","0 CALLE",datos$DIRECCION)
 datos$DIRECCION <- gsub(" Y "," ",datos$DIRECCION)
 #Eliminación de caracteres en la columna de establecimiento
 datos$ESTABLECIMIENTO <- gsub("'", '', datos$ESTABLECIMIENTO)
+datos$ESTABLECIMIENTO <- gsub("\\(POR MADUREZ\\)", '', datos$ESTABLECIMIENTO)
 
 #Eliminacion de caracteres especificos en columna telefono 
 datos$TELEFONO <- gsub("-|cel|\\.|/|,| ","",datos$TELEFONO)
@@ -121,6 +122,13 @@ datos <- subset(datos, !(is.na(CODIGO) & is.na(DISTRITO)))
 datos <- subset(datos, !(is.na(DISTRITO) & is.na(DEPARTAMENTO) & is.na(MUNICIPIO) & is.na(ESTABLECIMIENTO) & is.na(DIRECCION) & is.na(TELEFONO) & is.na(DIRECTOR) & is.na(SECTOR) & is.na(AREA) & is.na(STATUS) & is.na(MODALIDAD) & is.na(JORNADA) & is.na(PLAN) & is.na(DEPARTAMENTAL)))
 
 View(datos)
+
+
+datos$ESTABLECIMIENTO <- gsub('COLEGIO "SAN FRANCISCO JAVIER DE ZACAPA"','COLEGIO SAN FRANCISCO JAVIER DE ZACAPA',datos$ESTABLECIMIENTO)
+datos$ESTABLECIMIENTO <- gsub("INSTITUTO TECNICO EDUCACIÓN INDUSTRIAL","INSTITUTO TECNICO DE EDUCACIÓN INDUSTRIAL",datos$ESTABLECIMIENTO)
+datos$ESTABLECIMIENTO <- gsub('LICEO PARTICULAR MIXTO JIREH (POR MADUREZ)|LICEO PARTICULAR MIXTO "JIREH"','LICEO PARTICULAR MIXTO JIREH',datos$ESTABLECIMIENTO)
+datos$ESTABLECIMIENTO <- gsub('COLEGIO "HIGA"','COLEGIO HIGA',datos$ESTABLECIMIENTO)
+
 
 #EXPORTACION DE LOS DATOS LIMPIOS COMO ARCHIVO .CSV 
 df <-data_frame(datos)
