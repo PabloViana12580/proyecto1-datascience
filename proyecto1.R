@@ -10,6 +10,7 @@ Mayra Silva - 17276
 
 ----------------------------------* Proyecto 1 - Data Science *----------------------------------"
 #Librerias
+install.packages("tidyverse")
 library(tidyverse)
 
 #cargamos archivo RData
@@ -56,7 +57,8 @@ datos[datos == "-----------------"] <- NA
 datos[datos == "---------------------"] <- NA
 datos[datos == "--------------------"] <- NA
 datos$DIRECTOR[datos$DIRECTOR == "-----------------------------"] <- NA
-datos$DISTRITO[datos$DISTRITO == "01-"] <- NA #Cambiando distrito que solo tenga 01- a NA
+#Cambiando distrito que solo tenga 01- a NA
+datos$DISTRITO[datos$DISTRITO == "01-"] <- NA 
 # COLUMNA SUPERVISOR
 datos$SUPERVISOR[datos$SUPERVISOR == "------------------------ ---------------------------"] <- NA
 
@@ -81,6 +83,7 @@ datos <- subset(datos, !(is.na(DISTRITO) & is.na(DEPARTAMENTO) & is.na(MUNICIPIO
 
 View(datos)
 
-
-
+#EXPORTACION DE LOS DATOS LIMPIOS COMO ARCHIVO .CSV 
+df <-data_frame(datos)
+write_excel_csv(datos,"DatosLimpios.csv")
 
