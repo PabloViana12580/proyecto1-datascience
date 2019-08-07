@@ -2,7 +2,7 @@
 Catedratica: Lynette Garcia
 Pablo Viana - 16091 
 Sergio Marchena - 16387
-Jose Martinez -  
+Jose Martinez -  15163
 Odalis Reyes - 17032
 Ivan Maldonado - 17211
 Mayra Silva - 17276
@@ -77,7 +77,7 @@ datos <- datos%>% distinct(DEPARTAMENTO, MUNICIPIO, ESTABLECIMIENTO, DIRECCION, 
 
 # Elimina la fila que está llena de NAs
 datos <- subset(datos, !(is.na(CODIGO) & is.na(DISTRITO)))
-
+datos <- subset(datos, !(is.na(DISTRITO) & is.na(DEPARTAMENTO) & is.na(MUNICIPIO) & is.na(ESTABLECIMIENTO) & is.na(DIRECCION) & is.na(TELEFONO) & is.na(DIRECTOR) & is.na(SECTOR) & is.na(AREA) & is.na(STATUS) & is.na(MODALIDAD) & is.na(JORNADA) & is.na(PLAN) & is.na(DEPARTAMENTAL)))
 
 View(datos)
 
