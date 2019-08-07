@@ -72,10 +72,12 @@ datos$NIVEL[is.na(datos$NIVEL)] <- "DIVERSIFICADO"
 datos$TELEFONO <- gsub("-|cel|\\.|/|,| ","",datos$TELEFONO)
 
 #Eliminacion de caracteres especificos en columna Nombre
-datos$ESTABLECIMIENTO <- gsub("'", '', datos$ESTABLECIMIENTO) 
+datos$ESTABLECIMIENTO <- gsub("'", '', datos$ESTABLECIMIENTO)
+datos$ESTABLECIMIENTO <- gsub("ª", '', datos$ESTABLECIMIENTO)
+datos$DIRECCION <- gsub("\\. "," ",datos$DIRECCION)
 
 #Eliminacion de caracteres especificos en columna dirección
-datos$DIRECCION <- gsub(",", '', datos$DIRECCION) 
+datos$DIRECCION <- gsub(",", '', datos$DIRECCION)
 
 #Restriccion de un solo telefono por establecimiento
 datos$TELEFONO<- substr(datos$TELEFONO,1,8)
